@@ -34,89 +34,74 @@
         .font-merriweather {
             font-family: 'Merriweather', serif;
         }
+        @keyframes icon-flash {
+        0%, 100% {
+            fill: #ffffff; /* White - The normal color for the SVG */
+        }
+        50% {
+            fill: #f58c0b; /* Amber-500 - The highlight color for the SVG */
+            transform: scale(1.1); /* Slight movement */
+        }
+        }
+        
+        /* This rule makes the icon continuously blink (infinite) */
+        .cart-flashing svg { 
+            /* Blink continuously (0.8s duration is smoother for a permanent effect) */
+            animation: icon-flash 1.3s ease-in-out infinite alternate; 
+        }
     </style>
 </head>
 <body>
 <header
       class="bg-black text-white py-2 px-4 md:px-6 fixed w-full top-0 z-50 shadow-md"
     >
-      <nav class="container mx-auto flex justify-between items-center">
-                    <a href="index.html" onclick="showPage('home')" class="flex items-center space-x-2 pl-8"><img src="image/logo.png" alt="Mirigama Cashews Logo" class="h-10 w-auto rounded"/></a>
-        <div class="hidden md:flex space-x-8 items-center">
-          <a
-            href="index.html"
-            class="font-sans ... hover:text-amber-500 transition-colors"
-            >HOME</a
-          >
-          <a
-            href="products.html"
-            class="font-sans ... hover:text-amber-500 transition-colors"
-            >PRODUCTS</a
-          >
-          <a
-            href="about.html"
-            class="font-sans ... hover:text-amber-500 transition-colors"
-            >ABOUT</a
-          >
-          <a
-            href="#"
-            class="font-sans ... hover:text-amber-500 transition-colors border-b-2 border-amber-500"
-            >CONTACT</a
-          >
-          <div class="flex items-center space-x-4">
-            <a href="#" class="hover:text-amber-500 transition-colors">
-              <svg
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-                />
-              </svg>
-            </a>
-            <a href="#" class="hover:text-amber-500 transition-colors">
-              <svg
-                class="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-13.81-3.83c.41-.75 1.27-1.17 2.16-1.17h10.99l3.52-7.51a1.002 1.002 0 0 0-.8-1.49H7.15c-.9 0-1.7.53-2.07 1.35L2 13.59V17h16v-2H5.48l1.71-3.17z"
-                />
-              </svg>
-            </a>
-          </div>
-          <a
-            href="https://wa.me/94787204432" 
-            target="_blank"
-            class="font-sans bg-amber-500 hover:bg-amber-600 transition-colors text-black px-4 py-2 rounded-full font-bold shadow-2xl text-l flex items-center space-x-3 transform hover:scale-105 duration-300"
-        >
-            <i class="fas fa-phone-alt text-xl"></i>
-            <span>WhatsApp</span>
+       <nav class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2 pl-2 md:pl-8">
+            <img src="image/logo.png" alt="Mirigama Cashews Logo" class="h-10 w-auto rounded"/>
         </a>
+        
+        <div class="hidden md:flex space-x-8 items-center">
+            <a href="index.html" class="font-sans hover:text-amber-500 transition-colors ">HOME</a>
+            <a href="products.html" class="font-sans hover:text-amber-500 transition-colors border-b-2 border-amber-500">PRODUCTS</a>
+            <a href="about.html" class="font-sans hover:text-amber-500 transition-colors">ABOUT</a>
+            <a href="contact.html" class="font-sans hover:text-amber-500 transition-colors">CONTACT</a>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#" class="hover:text-amber-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </a>
+
+                <a href="cart.html" class="cart-link hover:text-amber-500 transition-colors relative">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-13.81-3.83c.41-.75 1.27-1.17 2.16-1.17h10.99l3.52-7.51a1.002 1.002 0 0 0-.8-1.49H7.15c-.9 0-1.7.53-2.07 1.35L2 13.59V17h16v-2H5.48l1.71-3.17z"/>
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-2 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </a>
+            </div>
+            
+            <a href="https://wa.me/94787204432" target="_blank" class="font-sans bg-amber-500 hover:bg-amber-600 transition-colors text-black px-4 py-2 rounded-full font-bold shadow-2xl text-l flex items-center space-x-3 transform hover:scale-105 duration-300">
+                <i class="fas fa-phone-alt text-xl"></i>
+                <span>WhatsApp</span>
+            </a>
         </div>
-        <div class="md:hidden">
-          <button id="mobile-menu-btn" class="text-white focus:outline-none">
-            <svg
-              class="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
-            </svg>
-          </button>
+
+        <div class="flex items-center space-x-4 pr-4 md:hidden">
+            <a href="cart.html" class="cart-link hover:text-amber-500 transition-colors relative">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-13.81-3.83c.41-.75 1.27-1.17 2.16-1.17h10.99l3.52-7.51a1.002 1.002 0 0 0-.8-1.49H7.15c-.9 0-1.7.53-2.07 1.35L2 13.59V17h16v-2H5.48l1.71-3.17z"/>
+                </svg>
+                <span id="cart-count-mobile" class="absolute -top-1 -right-2 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+            </a>
+            
+            <button id="mobile-menu-btn" class="text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
         </div>
-      </nav>
+    </nav>
       <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 border-t border-zinc-700 pb-4">
           <div class="flex flex-col space-y-2 p-4">
               <a href="index.html" class="block py-2 px-4 hover:bg-zinc-800 transition-colors rounded">HOME</a>
@@ -282,5 +267,209 @@
             Reserved.
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle Script
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // Set the current year for the copyright notice
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+
+
+            // **********************************************
+            // NEW FIXED RS. DISCOUNT LOGIC
+            // **********************************************
+            const applyFixedRsDiscount = () => {
+                const productCards = document.querySelectorAll('.product-card');
+
+                productCards.forEach(card => {
+                    // 1. Get the relevant elements
+                    const priceDisplay = card.querySelector('.price-display');
+                    const cartButton = card.querySelector('.add-to-cart-btn');
+                    
+                    if (!priceDisplay || !cartButton) return; 
+                    
+                    // 2. Extract original price and discount value
+                    const originalPriceValue = parseFloat(cartButton.getAttribute('data-price'));
+                    // Read the discount in Rs. If not set, it defaults to 0.
+                    const discountRsValue = parseFloat(cartButton.getAttribute('data-discount-rs')) || 0;
+                    
+                    // Proceed only if the original price is valid and discount is non-negative
+                    if (originalPriceValue > 0 && discountRsValue >= 0) {
+                        
+                        // 3. Check if a discount needs to be applied
+                        if (discountRsValue > 0) {
+                            const discountedPriceValue = originalPriceValue - discountRsValue;
+                            
+                            // Ensure price doesn't go below zero
+                            const finalPrice = Math.max(0, discountedPriceValue);
+                            
+                            // Format prices for display (no decimals for Rs.)
+                            const originalPriceFormatted = originalPriceValue.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                            const discountedPriceFormatted = finalPrice.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+                            // 4. Extract the weight/unit span for re-insertion
+                            const weightSpan = priceDisplay.querySelector('.text-xl.text-zinc-500');
+                            const weightText = weightSpan ? weightSpan.outerHTML : ''; 
+
+                            // 5. Rewrite the price display for the sale
+                            priceDisplay.innerHTML = `
+                                <span class="text-xl font-medium text-zinc-500 line-through mr-2 whitespace-nowrap">
+                                    LKR ${originalPriceFormatted}
+                                </span>
+                                <span class="text-3xl font-bold text-red-500 whitespace-nowrap">
+                                    LKR ${discountedPriceFormatted}
+                                </span>
+                                ${weightText}
+                            `;
+                            // Update the visual styling of the main price container
+                            priceDisplay.classList.remove('text-amber-500');
+                            
+                            // 6. Update the data-price attribute on the button to the new, discounted price
+                            // This ensures the correct price is added to the cart logic (cart.js)
+                            cartButton.setAttribute('data-price', finalPrice.toFixed(2));
+                            
+                            // 7. Add a "SALE" badge (optional, for visibility)
+                            const imgContainer = card.querySelector('.relative');
+                            // Only add the badge if it doesn't already exist
+                            if (!imgContainer.querySelector('.sale-badge')) {
+                                let badge = document.createElement('span');
+                                badge.className = 'sale-badge absolute top-4 right-4 bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-lg z-10';
+                                badge.textContent = `SAVE Rs. ${discountRsValue.toLocaleString('en-US')}`;
+                                imgContainer.appendChild(badge);
+                            }
+                        } else {
+                            // If discountRsValue is 0 or not set, ensure it shows the original price and styling
+                            
+                            // Remove any existing badge
+                            const existingBadge = card.querySelector('.sale-badge');
+                            if (existingBadge) {
+                                existingBadge.remove();
+                            }
+                            
+                            // Restore original price display if it was modified (by previous runs or logic)
+                            // This is redundant if the HTML is static but good for dynamic safety.
+                            const originalText = priceDisplay.textContent.match(/LKR\s*([\d,]+)\s*(\/\s*\d+g)/);
+                            if (originalText) {
+                                priceDisplay.innerHTML = `
+                                    <span class="text-3xl font-bold text-amber-500">${originalText[0].trim()}</span>
+                                `;
+                                priceDisplay.classList.add('text-amber-500');
+                            }
+                        }
+                    }
+                });
+            };
+            // Run the fixed discount logic on page load
+            applyFixedRsDiscount();
+            // END NEW FIXED RS. DISCOUNT LOGIC
+
+
+            // Filter logic (remains the same)
+            const mainFilters = document.querySelectorAll('.main-filter');
+            const subFiltersContainer = document.getElementById('sub-category-filters');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            let activeMainCategory = 'all';
+            let activeSubCategory = 'all';
+
+            const subCategoriesMap = {
+                'roasted': ['full', 'split'],
+                'ovan': ['full', 'split', 'pieces'],
+                'raw': ['full','split', 'pieces']
+            };
+
+            const updateSubFilters = (mainCat) => {
+                subFiltersContainer.innerHTML = '';
+                
+                if (mainCat !== 'all') {
+                    subFiltersContainer.innerHTML += `<button data-filter="all" class="filter-btn sub-filter px-4 py-2 rounded-full text-white bg-amber-500 hover:bg-amber-600 transition-colors text-sm active-sub-filter">All ${mainCat.charAt(0).toUpperCase() + mainCat.slice(1)}</button>`;
+                }
+                
+                if (subCategoriesMap[mainCat]) {
+                    subCategoriesMap[mainCat].forEach(subCat => {
+                        const buttonText = subCat.charAt(0).toUpperCase() + subCat.slice(1) + ' Cashews';
+                        subFiltersContainer.innerHTML += `<button data-filter="${subCat}" class="filter-btn sub-filter px-4 py-2 rounded-full text-zinc-300 bg-zinc-700 hover:bg-zinc-600 transition-colors text-sm">${buttonText}</button>`;
+                    });
+                    
+                    subFiltersContainer.style.height = 'auto'; 
+                    const newHeight = subFiltersContainer.scrollHeight + 'px'; 
+                    subFiltersContainer.style.height = '0'; 
+                    setTimeout(() => {
+                        subFiltersContainer.style.height = newHeight;
+                        subFiltersContainer.style.opacity = '1';
+                        subFiltersContainer.classList.remove('h-0');
+                    }, 10);
+                } else {
+                    subFiltersContainer.style.height = '0';
+                    subFiltersContainer.style.opacity = '0';
+                }
+                
+                document.querySelectorAll('.sub-filter').forEach(btn => {
+                    btn.addEventListener('click', handleSubFilterClick);
+                });
+            };
+
+            const filterProducts = () => {
+                productCards.forEach(card => {
+                    const cardMainCat = card.getAttribute('data-category');
+                    const cardSubCat = card.getAttribute('data-subcategory');
+                    
+                    let mainMatch = activeMainCategory === 'all' || cardMainCat === activeMainCategory;
+                    let subMatch = activeSubCategory === 'all' || cardSubCat === activeSubCategory;
+
+                    if (mainMatch && subMatch) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('active'), 50);
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('active');
+                    }
+                });
+            };
+
+            const handleMainFilterClick = (event) => {
+                const button = event.currentTarget;
+                const filterValue = button.getAttribute('data-filter');
+                
+                mainFilters.forEach(btn => btn.classList.remove('active-main-filter', 'bg-amber-500', 'text-black'));
+                button.classList.add('active-main-filter', 'bg-amber-500', 'text-black');
+                button.classList.remove('bg-zinc-800', 'text-white');
+                
+                activeMainCategory = filterValue;
+                activeSubCategory = 'all'; 
+
+                updateSubFilters(filterValue);
+                filterProducts();
+            };
+
+            const handleSubFilterClick = (event) => {
+                const button = event.currentTarget;
+                const filterValue = button.getAttribute('data-filter');
+                
+                document.querySelectorAll('.sub-filter').forEach(btn => btn.classList.remove('active-sub-filter', 'bg-amber-500', 'text-black'));
+                button.classList.add('active-sub-filter', 'bg-amber-500', 'text-black');
+                button.classList.remove('bg-zinc-700', 'text-zinc-300');
+
+                activeSubCategory = filterValue;
+                filterProducts();
+            };
+
+            mainFilters.forEach(button => {
+                button.addEventListener('click', handleMainFilterClick);
+            });
+            
+            updateSubFilters('all');
+            filterProducts(); 
+        });
+    </script>
+    <script src="cart.js"></script>
 </body>
 </html>

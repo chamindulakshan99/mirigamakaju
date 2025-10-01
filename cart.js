@@ -43,12 +43,11 @@ const Cart = {
     if (existingItem) {
       existingItem.quantity += product.quantity;
       // Note: We assume price/discount won't change after adding
-      // If it does, a full item replacement or price update logic would be needed here.
     } else {
       cart.push(product);
     }
 
-    Cart.saveCart(cart);
+    Cart.saveCart(cart); // This call triggers updateCartCount, which now handles the blinking
 
     // Simple confirmation notification
     const buttonText = buttonElement.querySelector("i")
@@ -83,17 +82,33 @@ const Cart = {
     Cart.renderCart(); // Re-render the cart page
   },
 
-  // 6. Update the number displayed in the header cart icon
+  // 6. Update the number displayed in the header cart icon and CONTROL BLINKING
   updateCartCount: () => {
     const cart = Cart.getCart();
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    const countElement = document.getElementById("cart-count");
+    const countElementDesktop = document.getElementById("cart-count");
+    const countElementMobile = document.getElementById("cart-count-mobile"); 
 
-    if (countElement) {
-      countElement.textContent = totalItems;
-      countElement.classList.toggle("hidden", totalItems === 0);
-    }
+    const elements = [countElementDesktop, countElementMobile].filter(el => el !== null);
+    const hasItems = totalItems > 0;
+
+    // 1. Update the item count displays
+    elements.forEach(countElement => {
+        if (countElement) {
+            countElement.textContent = totalItems;
+            countElement.classList.toggle("hidden", !hasItems);
+        }
+    });
+    
+    // 2. Control the blinking
+    const cartLinks = document.querySelectorAll(".cart-link");
+    cartLinks.forEach(link => {
+        // If hasItems is true, add the class (start blinking). If false, remove the class (stop blinking).
+        link.classList.toggle('cart-flashing', hasItems);
+    });
   },
+
+  // (Removed flashCartIcon function as its logic is now in updateCartCount)
 
   // 7. Render the cart contents on the cart.html page
   renderCart: () => {
